@@ -45,7 +45,14 @@ gopayRouter.post('/request-otp', async (c) => {
     authState.vid = vid
 
     const initPin = await gojekFetch(c.env, ssoBase, "/cvs/v1/initiate", "POST", {
-      client_id: CLIENT_ID, client_secret: CLIENT_SECRET, flow: "login_1fa", verification_id: vid, verification_method: "goto_pin", is_multiple_method: true
+      client_id: CLIENT_ID, 
+      client_secret: CLIENT_SECRET, 
+      flow: "login_1fa", 
+      verification_id: vid, 
+      verification_method: "goto_pin", 
+      is_multiple_method: true,
+      country_code: "+62",
+      phone_number: local
     }, "", (acc as any).uniqueid, (acc as any).session_id, authState.xm1)
     
     const challengeId = initPin.body?.data?.challenge_id || ""
@@ -79,7 +86,13 @@ gopayRouter.post('/request-otp', async (c) => {
       const newVid = t1Res.body?.data?.verification_id || vid
       
       const otpRes = await gojekFetch(c.env, ssoBase, "/cvs/v1/initiate", "POST", {
-          client_id: CLIENT_ID, client_secret: CLIENT_SECRET, flow: "login_2fa", verification_id: newVid, verification_method: channel
+          client_id: CLIENT_ID, 
+          client_secret: CLIENT_SECRET, 
+          flow: "login_2fa", 
+          verification_id: newVid, 
+          verification_method: channel,
+          country_code: "+62",
+          phone_number: local
       }, "", (acc as any).uniqueid, (acc as any).session_id, authState.xm1)
 
       authState.otpToken = otpRes.body?.data?.otp_token || ""
