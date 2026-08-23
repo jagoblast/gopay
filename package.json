@@ -4,7 +4,7 @@
   "description": "Serverless GoPay Payment Gateway",
   "private": true,
   "scripts": {
-    "build": "esbuild src/index.tsx --bundle --outfile=dist/_worker.js --format=esm --target=esnext",
+    "build": "esbuild src/index.tsx --bundle --outfile=dist/_worker.js --format=esm --target=esnext --external:node:*",
     "dev": "wrangler pages dev dist"
   },
   "dependencies": {
