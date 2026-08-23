@@ -30,7 +30,12 @@ gopayRouter.post('/request-otp', async (c) => {
     const ssoBase = "https://accounts.goto-products.com"
 
     const methRes = await gojekFetch(c.env, ssoBase, "/goto-auth/login/methods", "POST", {
-      client_id: CLIENT_ID, client_secret: CLIENT_SECRET, country_code: "+62", phone_number: local, email: "", device_verification_token_id: "", user_type: "customer"
+      client_id: CLIENT_ID, 
+      client_secret: CLIENT_SECRET, 
+      country_code: "+62", 
+      phone_number: local, 
+      email: "", 
+      device_verification_token_id: ""
     }, "", (acc as any).uniqueid, (acc as any).session_id, authState.xm1)
 
     if (methRes.status === 429) return c.json({ error: "Terkena Rate Limit 429." }, 429)
