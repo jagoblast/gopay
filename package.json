@@ -1,0 +1,19 @@
+{
+  "name": "gopay-protocol-worker",
+  "version": "1.0.0",
+  "description": "Serverless GoPay Payment Gateway",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "hono": "^4.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240320.1",
+    "typescript": "^5.0.0",
+    "wrangler": "^3.0.0"
+  }
+}
