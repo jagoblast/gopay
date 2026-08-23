@@ -48,10 +48,15 @@ export async function gojekFetch(env: Bindings, baseUrl: string, path: string, m
     "X-DeviceOS": "Android,13",
     "X-PhoneMake": "Google",
     "X-PhoneModel": "google,sdk_gphone64_x86_64",
-    "User-Type": "customer",
-    "X-User-Type": "customer",
-    "user_type": "customer",
     "D1": D1_CERT,
+    
+    // --- PENYESUAIAN DARI KODE JAGOBLAST/GOPAY ---
+    "X-User-Type": "customer",
+    "X-AuthSDK-Version": "3.103.0",
+    "X-CVSDK-Version": "3.73.0",
+    "Transaction-ID": randomUUID(),
+    // ---------------------------------------------
+    
     ...sigs
   }
   
