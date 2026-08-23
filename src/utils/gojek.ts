@@ -48,6 +48,7 @@ export async function gojekFetch(env: Bindings, baseUrl: string, path: string, m
     "X-DeviceOS": "Android,13",
     "X-PhoneMake": "Google",
     "X-PhoneModel": "google,sdk_gphone64_x86_64",
+    "user-type": "customer",
     "D1": D1_CERT,
     ...sigs
   }
