@@ -44,12 +44,14 @@ gopayRouter.post('/request-otp', async (c) => {
     if(!vid) throw new Error("Gagal mendapatkan verification_id");
     authState.vid = vid
 
+    // Step 2: Initiate PIN 
     const initPin = await gojekFetch(c.env, ssoBase, "/cvs/v1/initiate", "POST", {
       client_id: CLIENT_ID, 
       client_secret: CLIENT_SECRET, 
       flow: "login_1fa", 
       verification_id: vid, 
       verification_method: "goto_pin", 
+      is_multiple_method: true,
       country_code: "+62",
       phone_number: local
     }, "", (acc as any).uniqueid, (acc as any).session_id, authState.xm1)
