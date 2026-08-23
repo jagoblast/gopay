@@ -50,9 +50,7 @@ gopayRouter.post('/request-otp', async (c) => {
       flow: "login_1fa", 
       verification_id: vid, 
       verification_method: "goto_pin", 
-      is_multiple_method: true,
-      country_code: "+62",
-      phone_number: local
+      is_multiple_method: true
     }, "", (acc as any).uniqueid, (acc as any).session_id, authState.xm1)
     
     const challengeId = initPin.body?.data?.challenge_id || ""
@@ -90,9 +88,7 @@ gopayRouter.post('/request-otp', async (c) => {
           client_secret: CLIENT_SECRET, 
           flow: "login_2fa", 
           verification_id: newVid, 
-          verification_method: channel,
-          country_code: "+62",
-          phone_number: local
+          verification_method: channel
       }, "", (acc as any).uniqueid, (acc as any).session_id, authState.xm1)
 
       authState.otpToken = otpRes.body?.data?.otp_token || ""
