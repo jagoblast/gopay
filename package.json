@@ -4,15 +4,15 @@
   "description": "Serverless GoPay Payment Gateway",
   "private": true,
   "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "typecheck": "tsc --noEmit"
+    "build": "esbuild src/index.tsx --bundle --outfile=dist/_worker.js --format=esm --target=esnext",
+    "dev": "wrangler pages dev dist"
   },
   "dependencies": {
     "hono": "^4.0.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240320.1",
+    "esbuild": "^0.20.0",
     "typescript": "^5.0.0",
     "wrangler": "^3.0.0"
   }
