@@ -1,0 +1,2 @@
+name = "gopay-protocol-worker"
+main = "src/index.tsx"
