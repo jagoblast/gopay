@@ -164,7 +164,7 @@ dashboardRouter.get('/', (c) => {
           // Panggil fetchJobs saat halaman pertama dimuat
           document.addEventListener("DOMContentLoaded", fetchJobs);
           // Auto-refresh tiap 30 detik
-          setInterval(fetchJobs, 30000);
+          // setInterval(fetchJobs, 30000);
 
 
           // =========================
