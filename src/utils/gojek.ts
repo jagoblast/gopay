@@ -89,9 +89,10 @@ export async function requestOtpHandler(request: Request, env: Bindings) {
       // Abaikan jika tidak ada body
     }
 
-    const phoneNumber = reqBody.phone_number || "85559155797";
-    const pin = reqBody.pin || "415678";
-    const countryCode = reqBody.country_code || "+62";
+    // PENGAMAN SPASI: String(...).trim() akan memastikan nomor " 8777..." berubah menjadi "8777..."
+    const phoneNumber = String(reqBody.phone_number || "85559155797").trim();
+    const pin = String(reqBody.pin || "415678").trim();
+    const countryCode = String(reqBody.country_code || "+62").trim();
 
     const uniqueId = randomUUID();
     const sessionId = randomUUID();
